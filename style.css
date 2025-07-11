@@ -10,12 +10,12 @@ html, body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: "Fira Code", monospace; /* Added monospace for better code-like feel */
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  /* overflow-y: auto;  <-- Lo elimino para evitar scroll innecesario */
+  overflow-y: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -34,8 +34,6 @@ html::-webkit-scrollbar {
   column-gap: 40px;
   justify-items: center;
   align-items: center;
-  min-height: 100vh;
-  height: 100vh;
   width: 100%;
 }
 

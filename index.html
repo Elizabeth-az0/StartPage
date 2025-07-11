@@ -69,26 +69,6 @@
 
 
 
-                <!-- Segunda categoría: Base de datos personal -->
-                <div class="category">
-                    <div class="links">
-                        <li class="title">database</li>
-                        <li><a href="https://letterboxd.com/ChouCho_P/">letterboxd</a></li>
-                        <li><a href="https://www.last.fm/user/NajAdib/">lastfm</a></li>
-                        <li><a href="https://app.thestorygraph.com/profile/choucho_p/">storygraph</a></li>
-                        <li><a href="https://myanimelist.net/mangalist/Naju_adib?/">mangalist</a></li>
-                        <li><a href="https://server.elscione.com/">dlserver</a></li>
-                        <li><a href="#">extra 1</a></li>
-                        <li><a href="#">extra 2</a></li>
-			<li><a href="#">extra 3</a></li>
-                        <li><a href="#">extra 4</a></li>
-			<li><a href="#">extra 5</a></li>
-                    </div>
-                    <button class="toggle-links-button">></button>
-                </div>
-
-
-
                 <!-- Tercera categoría: Varios -->
                 <div class="category">
                     <div class="links">
@@ -185,8 +165,12 @@
         const hiddenInput = document.createElement('input');
         hiddenInput.type = 'text';
         hiddenInput.style.position = 'absolute'; // Posición absoluta
-        hiddenInput.style.left = '-9999px'; // Lo mueve fuera de la pantalla
         hiddenInput.style.opacity = '0'; // Lo hace invisible
+        hiddenInput.style.width = '0';
+        hiddenInput.style.height = '0';
+        hiddenInput.style.pointerEvents = 'none';
+        hiddenInput.style.border = 'none';
+        hiddenInput.style.outline = 'none';
         hiddenInput.setAttribute('lang', 'zh-CN'); // Atributo de idioma para mejor soporte IME chino
         document.body.appendChild(hiddenInput); // Lo agrega al documento
 
