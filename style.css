@@ -16,7 +16,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  /* overflow-y: auto; */
+  overflow: hidden;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -58,14 +58,14 @@ html::-webkit-scrollbar {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 10px; /* Sube todo el contenido derecho */
+  padding-top: 0px; /* Sube todo el contenido derecho */
   padding-bottom: 0;
 }
 
 .datetime-container {
     font-size: 1.47em;
     color: var(--color-fg);
-    margin-bottom: 38px; /* Más espacio debajo del reloj */
+    margin-bottom: 48px; /* Más espacio debajo del reloj */
     margin-top: 0px;
     text-align: center;
     width: 100%;
@@ -86,7 +86,7 @@ html::-webkit-scrollbar {
   font-size: 33.6px;
   padding-top: 0px;
   margin-top: 0px;
-  margin-bottom: 42px; /* Más espacio debajo de la barra de búsqueda */
+  margin-bottom: 52px; /* Más espacio debajo de la barra de búsqueda */
   white-space: nowrap;
 }
 
