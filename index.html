@@ -2,52 +2,72 @@
 <html lang="en">
 
 <head>
+    <!-- Configuración básica del documento HTML -->
     <meta charset="UTF-8">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>~/startpage</title>
+    <!-- Enlace al archivo de estilos CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Configuración para dispositivos móviles - hace que la página sea responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+    <!-- Contenedor principal que divide la página en dos secciones -->
     <div class="container">
+        <!-- Sección izquierda - contiene el GIF del gato -->
         <div class="left-container">
             <div class="gif">
                 <img src="cat.gif" />
             </div>
         </div>
 
+        <!-- Sección derecha - contiene toda la funcionalidad principal -->
         <div class="right-container">
-            <!-- Three link buttons added here -->
+            <!-- Botones de enlaces rápidos en la esquina superior derecha -->
+            <!-- Estos botones son invisibles pero clickeables para acceder rápidamente a IAs -->
             <a href="https://claude.ai/new" class="top-right-link-button button-1" target="_blank"></a>
             <a href="https://gemini.google.com/app" class="top-right-link-button button-2" target="_blank"></a>
             <a href="https://chatgpt.com" class="top-right-link-button button-3" target="_blank"></a>
+            <!-- Contenedor para mostrar la fecha y hora actual -->
             <div class="datetime-container">
                 <div id="current-datetime"></div>
             </div>
+            <!-- Barra de búsqueda principal - simula una terminal -->
             <div class="head">
-                <!-- Modified for search bar functionality -->
-                <span id="prompt-prefix">> cd ~/</span><span id="search-text"></span><span id="blinker" class="blinking">_</span>
+                <!-- Prefijo fijo que simula un prompt de terminal -->
+                <span id="prompt-prefix">> cd ~/</span>
+                <!-- Aquí se muestra el texto que el usuario está escribiendo -->
+                <span id="search-text"></span>
+                <!-- Cursor parpadeante que simula una terminal -->
+                <span id="blinker" class="blinking">_</span>
             </div>
 
+            <!-- Sección de marcadores organizados por categorías -->
             <div class="bookmarks">
+                <!-- Primera categoría: Herramientas -->
                 <div class="category">
                     <div class="links">
+                        <!-- Título de la categoría -->
                         <li class="title">Tools</li>
+                        <!-- Enlaces principales (se muestran por defecto) -->
                         <li><a href="https://najmossalahin.github.io/AI_Link_Vault//">link saver</a></li>
                         <li><a href="https://najmossalahin.github.io/Task_Tracker/">task tracker</a></li>
                         <li><a href="https://najmossalahin.github.io/Zenith_Tracker/">mood tracker</a></li>
                         <li><a href="https://najmossalahin.github.io/Word-Explorer/">word saver</a></li>
                         <li><a href="https://calendar.google.com/calendar/u/0">calendar</a></li>
-                        <!-- Links beyond the first 5 -->
+                        <!-- Enlaces adicionales (se ocultan por defecto, se muestran con paginación) -->
                         <li><a href="#">extra 1</a></li>
                         <li><a href="#">extra 2</a></li>
                         <li><a href="#">extra 3</a></li>
                         <li><a href="#">extra 4</a></li>
 		        <li><a href="#">extra 5</a></li>
                     </div>
+                    <!-- Botón para cambiar entre páginas de enlaces -->
                     <button class="toggle-links-button">></button>
                 </div>
 
+                <!-- Segunda categoría: Desarrollo -->
                 <div class="category">
                     <div class="links">
                         <li class="title">dev</li>
@@ -65,6 +85,7 @@
                     <button class="toggle-links-button">></button>
                 </div>
 
+                <!-- Tercera categoría: Base de datos personal -->
                 <div class="category">
                     <div class="links">
                         <li class="title">database</li>
@@ -82,6 +103,7 @@
                     <button class="toggle-links-button">></button>
                 </div>
 
+                <!-- Cuarta categoría: Entretenimiento -->
                 <div class="category">
                     <div class="links">
                         <li class="title">play</li>
@@ -99,6 +121,7 @@
                     <button class="toggle-links-button">></button>
                 </div>
 
+                <!-- Quinta categoría: Varios -->
                 <div class="category">
                     <div class="links">
                         <li class="title">random</li>
@@ -116,6 +139,7 @@
                     <button class="toggle-links-button">></button>
                 </div>
 
+                <!-- Sexta categoría: Redes sociales -->
                 <div class="category">
                     <div class="links">
                         <li class="title">social</li>
@@ -133,6 +157,7 @@
                     <button class="toggle-links-button">></button>
                 </div>
 
+                <!-- Séptima categoría: Actividades diarias -->
                 <div class="category">
                     <div class="links">
                         <li class="title">dailies</li>
@@ -150,7 +175,7 @@
                     <button class="toggle-links-button">></button>
                 </div>
 
-                <!-- New 'misc' category added for equal distribution into two rows -->
+                <!-- Octava categoría: Misceláneos (para distribuir en dos filas) -->
                 <div class="category">
                     <div class="links">
                         <li class="title">misc</li>
@@ -172,105 +197,119 @@
     </div>
 
     <script>
-        // Function to update the clock and date
+        // ========================================
+        // FUNCIÓN PARA ACTUALIZAR RELOJ Y FECHA
+        // ========================================
         function updateDateTime() {
+            // Obtiene la fecha y hora actual
             const now = new Date();
 
-            // Format time for 12-hour clock with AM/PM
+            // Formatea la hora en formato 12 horas con AM/PM
             let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0'); // Asegura que siempre tenga 2 dígitos
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // The hour '0' should be '12'
+            const ampm = hours >= 12 ? 'PM' : 'AM'; // Determina si es AM o PM
+            hours = hours % 12; // Convierte a formato 12 horas
+            hours = hours ? hours : 12; // Si es 0, lo convierte a 12
             const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
 
-            // Format date
+            // Formatea la fecha en formato largo (ej: "January 15, 2024")
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const dateString = now.toLocaleDateString('en-US', options);
 
+            // Actualiza el texto en la página
             document.getElementById('current-datetime').textContent = `${dateString} ${timeString}`;
         }
 
-        // Update the clock every second
+        // Actualiza el reloj cada segundo (1000 milisegundos)
         setInterval(updateDateTime, 1000);
 
-        // Initial call to display the time immediately
+        // Llamada inicial para mostrar la hora inmediatamente al cargar la página
         updateDateTime();
 
-        // Search bar functionality
-        const searchTextElement = document.getElementById('search-text');
-        const blinkerElement = document.getElementById('blinker');
-        let searchQuery = '';
+        // ========================================
+        // FUNCIONALIDAD DE LA BARRA DE BÚSQUEDA
+        // ========================================
+        // Elementos del DOM para la barra de búsqueda
+        const searchTextElement = document.getElementById('search-text'); // Donde se muestra el texto
+        const blinkerElement = document.getElementById('blinker'); // El cursor parpadeante
+        let searchQuery = ''; // Variable que almacena la consulta de búsqueda
 
-        // Function to validate if a string is a URL
+        // Función para validar si una cadena es una URL válida
         function isValidUrl(string) {
+            // Expresión regular que detecta URLs (con o sin http/https, con www o sin www)
             const urlRegex = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/[a-zA-Z0-9]+\.[^\s]{2,}|[a-zA-Z0-9]+\.[^\s]{2,})$/i;
             return urlRegex.test(string);
         }
 
-        // Create a hidden input element for better IME support
+        // ========================================
+        // CONFIGURACIÓN DEL INPUT OCULTO PARA IME
+        // ========================================
+        // Crea un elemento input invisible para mejor soporte de IME (métodos de entrada)
         const hiddenInput = document.createElement('input');
         hiddenInput.type = 'text';
-        hiddenInput.style.position = 'absolute';
-        hiddenInput.style.left = '-9999px';
-        hiddenInput.style.opacity = '0';
-        hiddenInput.setAttribute('lang', 'zh-CN'); // Set language attribute for better IME support
-        document.body.appendChild(hiddenInput);
+        hiddenInput.style.position = 'absolute'; // Posición absoluta
+        hiddenInput.style.left = '-9999px'; // Lo mueve fuera de la pantalla
+        hiddenInput.style.opacity = '0'; // Lo hace invisible
+        hiddenInput.setAttribute('lang', 'zh-CN'); // Atributo de idioma para mejor soporte IME chino
+        document.body.appendChild(hiddenInput); // Lo agrega al documento
 
-        // Focus the hidden input when clicking on the search area
+        // Enfoca el input oculto cuando se hace clic en el área de búsqueda
         document.querySelector('.head').addEventListener('click', () => {
             hiddenInput.focus();
         });
 
-        // Handle input events for better multilingual support
+        // Maneja eventos de entrada para mejor soporte multilingüe
         hiddenInput.addEventListener('input', (event) => {
-            searchQuery = event.target.value;
-            searchTextElement.textContent = searchQuery;
+            searchQuery = event.target.value; // Actualiza la variable de búsqueda
+            searchTextElement.textContent = searchQuery; // Muestra el texto en la pantalla
         });
 
-        // Handle composition events for IME input (important for pinyin)
+        // Maneja eventos de composición para entrada IME (importante para pinyin)
         hiddenInput.addEventListener('compositionstart', (event) => {
-            // IME composition started
+            // Se inicia la composición IME (cuando empiezas a escribir pinyin)
         });
 
         hiddenInput.addEventListener('compositionend', (event) => {
-            // IME composition ended, update the search query
+            // Termina la composición IME (cuando seleccionas el carácter chino)
             searchQuery = event.target.value;
             searchTextElement.textContent = searchQuery;
         });
 
-        // Handle keydown events for special keys
+        // Maneja eventos de teclas especiales (como Enter)
         hiddenInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                event.preventDefault();
-                const trimmedQuery = searchQuery.trim();
+                event.preventDefault(); // Previene el comportamiento por defecto
+                const trimmedQuery = searchQuery.trim(); // Elimina espacios al inicio y final
                 if (trimmedQuery !== '') {
                     if (isValidUrl(trimmedQuery)) {
+                        // Si es una URL válida, navega directamente a ella
                         let urlToOpen = trimmedQuery;
                         if (!urlToOpen.startsWith('http://') && !urlToOpen.startsWith('https://')) {
-                            urlToOpen = `http://${urlToOpen}`;
+                            urlToOpen = `http://${urlToOpen}`; // Agrega http:// si no lo tiene
                         }
                         window.location.href = urlToOpen;
                     } else {
+                        // Si no es una URL, busca en Google
                         window.location.href = `https://www.google.com/search?q=${encodeURIComponent(trimmedQuery)}`;
                     }
                 }
+                // Limpia la barra de búsqueda después de ejecutar
                 searchQuery = '';
                 hiddenInput.value = '';
                 searchTextElement.textContent = searchQuery;
             }
         });
 
-        // Also handle global keydown for Enter key anywhere on the page
+        // También maneja la tecla Enter desde cualquier parte de la página
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' && document.activeElement !== hiddenInput) {
                 event.preventDefault();
-                hiddenInput.focus();
+                hiddenInput.focus(); // Enfoca la barra de búsqueda
             }
         });
 
-        // Handle paste events for better text input
+        // Maneja eventos de pegar texto para mejor entrada de texto
         hiddenInput.addEventListener('paste', (event) => {
             setTimeout(() => {
                 searchQuery = event.target.value;
@@ -278,57 +317,59 @@
             }, 0);
         });
 
-        // Pagination for links functionality
+        // ========================================
+        // FUNCIONALIDAD DE PAGINACIÓN PARA ENLACES
+        // ========================================
         document.addEventListener('DOMContentLoaded', () => {
-            const categories = document.querySelectorAll('.category');
-            const linksPerPage = 5; // Number of links to show per page
+            const categories = document.querySelectorAll('.category'); // Obtiene todas las categorías
+            const linksPerPage = 5; // Número de enlaces a mostrar por página
 
             categories.forEach(category => {
-                const linksContainer = category.querySelector('.links');
-                const titleElement = linksContainer.querySelector('.title');
-                // Get all actual link elements, excluding the title
+                const linksContainer = category.querySelector('.links'); // Contenedor de enlaces
+                const titleElement = linksContainer.querySelector('.title'); // Elemento del título
+                // Obtiene todos los elementos de enlace reales, excluyendo el título
                 const allLinkElements = Array.from(linksContainer.querySelectorAll('li:not(.title)'));
 
-                // Store all original links and current page index on the category element
+                // Almacena todos los enlaces originales y el índice de página actual en el elemento categoría
                 category.allOriginalLinks = allLinkElements;
-                category.currentPage = 0;
+                category.currentPage = 0; // Empieza en la página 0
 
-                const toggleButton = category.querySelector('.toggle-links-button');
+                const toggleButton = category.querySelector('.toggle-links-button'); // Botón de cambio de página
 
-                // Function to display the links for the current page
+                // Función para mostrar los enlaces de la página actual
                 function displayCurrentPage(currentCategory) {
-                    const allLinks = currentCategory.allOriginalLinks;
-                    const currentPage = currentCategory.currentPage;
-                    const startIndex = currentPage * linksPerPage;
-                    const endIndex = startIndex + linksPerPage;
+                    const allLinks = currentCategory.allOriginalLinks; // Todos los enlaces
+                    const currentPage = currentCategory.currentPage; // Página actual
+                    const startIndex = currentPage * linksPerPage; // Índice de inicio
+                    const endIndex = startIndex + linksPerPage; // Índice de fin
 
-                    // Hide all links first
+                    // Oculta todos los enlaces primero
                     allLinks.forEach(link => link.style.display = 'none');
 
-                    // Show only the links for the current page
+                    // Muestra solo los enlaces de la página actual
                     for (let i = startIndex; i < endIndex && i < allLinks.length; i++) {
                         allLinks[i].style.display = 'list-item';
                     }
 
-                    // Update button visibility based on number of pages
+                    // Actualiza la visibilidad del botón según el número de páginas
                     if (allLinks.length <= linksPerPage) {
-                        toggleButton.style.display = 'none'; // Hide button if no pagination needed
+                        toggleButton.style.display = 'none'; // Oculta el botón si no se necesita paginación
                     } else {
-                        toggleButton.style.display = 'block'; // Show button if pagination is needed
+                        toggleButton.style.display = 'block'; // Muestra el botón si se necesita paginación
                     }
                 }
 
-                // Initial display of links for each category
+                // Muestra inicial de enlaces para cada categoría
                 displayCurrentPage(category);
 
-                // Add click listener to the toggle button
+                // Agrega listener de clic al botón de cambio
                 toggleButton.addEventListener('click', () => {
-                    category.currentPage++; // Move to the next page
-                    // If we've gone past the last page, loop back to the first page (page 0)
+                    category.currentPage++; // Avanza a la siguiente página
+                    // Si hemos pasado la última página, regresa a la primera página (página 0)
                     if (category.currentPage * linksPerPage >= category.allOriginalLinks.length) {
                         category.currentPage = 0;
                     }
-                    displayCurrentPage(category); // Update the displayed links
+                    displayCurrentPage(category); // Actualiza los enlaces mostrados
                 });
             });
         });
