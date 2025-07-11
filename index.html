@@ -164,8 +164,10 @@
         // Crea un elemento input invisible para mejor soporte de IME (métodos de entrada)
         const hiddenInput = document.createElement('input');
         hiddenInput.type = 'text';
-        hiddenInput.style.position = 'absolute'; // Posición absoluta
-        hiddenInput.style.opacity = '0'; // Lo hace invisible
+        hiddenInput.style.position = 'fixed';
+        hiddenInput.style.top = '0';
+        hiddenInput.style.left = '0';
+        hiddenInput.style.opacity = '0';
         hiddenInput.style.width = '0';
         hiddenInput.style.height = '0';
         hiddenInput.style.pointerEvents = 'none';
