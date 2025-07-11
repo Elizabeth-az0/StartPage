@@ -215,6 +215,7 @@
         hiddenInput.style.position = 'absolute';
         hiddenInput.style.left = '-9999px';
         hiddenInput.style.opacity = '0';
+        hiddenInput.setAttribute('lang', 'zh-CN'); // Set language attribute for better IME support
         document.body.appendChild(hiddenInput);
 
         // Focus the hidden input when clicking on the search area
@@ -224,6 +225,17 @@
 
         // Handle input events for better multilingual support
         hiddenInput.addEventListener('input', (event) => {
+            searchQuery = event.target.value;
+            searchTextElement.textContent = searchQuery;
+        });
+
+        // Handle composition events for IME input (important for pinyin)
+        hiddenInput.addEventListener('compositionstart', (event) => {
+            // IME composition started
+        });
+
+        hiddenInput.addEventListener('compositionend', (event) => {
+            // IME composition ended, update the search query
             searchQuery = event.target.value;
             searchTextElement.textContent = searchQuery;
         });
@@ -256,6 +268,14 @@
                 event.preventDefault();
                 hiddenInput.focus();
             }
+        });
+
+        // Handle paste events for better text input
+        hiddenInput.addEventListener('paste', (event) => {
+            setTimeout(() => {
+                searchQuery = event.target.value;
+                searchTextElement.textContent = searchQuery;
+            }, 0);
         });
 
         // Pagination for links functionality
