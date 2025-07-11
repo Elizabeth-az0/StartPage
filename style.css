@@ -32,7 +32,7 @@ html::-webkit-scrollbar {
   grid-template-columns: 1fr minmax(450px, 600px) minmax(700px, 1fr) 1fr;
   grid-template-areas:
     ". left right .";
-  column-gap: 40px;
+  column-gap: 80px; /* Más separación entre gif y categorías */
   justify-items: center;
   align-items: center;
   min-height: 100vh;
@@ -58,13 +58,14 @@ html::-webkit-scrollbar {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding-top: 10px; /* Sube todo el contenido derecho */
   padding-bottom: 0;
 }
 
 .datetime-container {
     font-size: 1.47em;
     color: var(--color-fg);
-    margin-bottom: 28px; /* Más espacio debajo del reloj */
+    margin-bottom: 38px; /* Más espacio debajo del reloj */
     margin-top: 0px;
     text-align: center;
     width: 100%;
@@ -85,7 +86,7 @@ html::-webkit-scrollbar {
   font-size: 33.6px;
   padding-top: 0px;
   margin-top: 0px;
-  margin-bottom: 32px; /* Más espacio debajo de la barra de búsqueda */
+  margin-bottom: 42px; /* Más espacio debajo de la barra de búsqueda */
   white-space: nowrap;
 }
 
@@ -106,7 +107,7 @@ html::-webkit-scrollbar {
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-  margin-top: 40px;
+  margin-top: 30px; /* Menos espacio arriba de las categorías */
   /* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
